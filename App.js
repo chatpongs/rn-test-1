@@ -1,21 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
+import { createStackNavigator } from 'react-navigation';
+
+import Login from './screens/Login';
+import Home from './screens/Home';
+import Detail from './screens/Detail';
+
+const RootStack = createStackNavigator(
+  {
+    Login,
+    Home,
+    Detail,
+  }, {
+    initialRouteName: 'Login',
+  }
+);
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <PaperProvider>
+        <RootStack />
+      </PaperProvider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
